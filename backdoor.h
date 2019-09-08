@@ -11,7 +11,6 @@
 #define SERVER_BACKLOG 2000
 #define SERVER_ADDR "192.168.1.3"
 
-
 static void show_banner(){
 
     puts("███╗   ███╗ ██████╗ ██████╗ ██████╗ ██╗  ██╗███████╗██╗   ██╗███████╗");
@@ -22,6 +21,11 @@ static void show_banner(){
     puts("╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝");
     printf("\nAuthor: %s\n", AUTHOR);
     printf("Version: %s\n\n", VERSION);
+}
+
+static void show_help(char *name){
+    fprintf(stderr, "[Use]: %s <your address> <port>\nExample: %s 192.168.1.10 5500\n", name, name);
+    exit(1);
 }
 
 int create_socket(){
@@ -35,4 +39,3 @@ int create_socket(){
     printf("[+]Successfully created socket\n");
     return sockfd;
 }
-
