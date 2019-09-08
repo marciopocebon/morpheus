@@ -7,9 +7,7 @@
 
 #define AUTHOR "zer0dx"
 #define VERSION "0.2"
-#define SERVER_PORT 5000
 #define SERVER_BACKLOG 2000
-#define SERVER_ADDR "192.168.1.3"
 
 static void show_banner(){
 
