@@ -1,13 +1,13 @@
 # Morpheus
 
-<img src="https://i.imgur.com/M3HLZOZ.png" width=150>
+<img src="https://i.imgur.com/M3HLZOZ.png" width=150 align="center">
 
 
 ```
 Morpheus is a simple backdoor written in C language
 ```
 
-### OS supported tested
+### OS tested
 
 ```
 Fedora 30
