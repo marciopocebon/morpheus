@@ -72,6 +72,8 @@ int main(int argc, char *argv[]){
         FILE *exec = popen(cmd, "r");
         char output[1024];
 
+        memset(&output, 0, sizeof(output));
+
         while(fgets(output, sizeof(output), exec) != 0){
             printf("%s", output);
             send(sockfd_client, output, sizeof(output), 0);
