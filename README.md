@@ -1,11 +1,17 @@
 # Morpheus
 
-<img src="https://i.imgur.com/M3HLZOZ.png" width=150 align="center">
+<p align="center">
+  <h3 align="center">Morpheus</h3>
+  <p align="center">Morpheus is a simple backdoor written in C language</p>
 
+  <p align="center">
+    <a href="https://twitter.com/GouveaHeitor">
+      <img src="https://i.imgur.com/M3HLZOZ.png" width=150>
+    </a>
+  </p>
+</p>
 
-```
-Morpheus is a simple backdoor written in C language
-```
+<hr>
 
 ### OS tested
 
