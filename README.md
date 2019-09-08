@@ -1,6 +1,6 @@
 # Morpheus
 
-![image](https://i.imgur.com/M3HLZOZ.png)
+<img src="https://i.imgur.com/M3HLZOZ.png" width=150>
 
 
 ```
