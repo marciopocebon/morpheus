@@ -7,6 +7,14 @@
 Morpheus is a simple backdoor written in C language
 ```
 
+### OS supported tested
+
+```
+Fedora 30
+Debian 9/10
+Windows 10
+```
+
 ### Compile
 
 ```
