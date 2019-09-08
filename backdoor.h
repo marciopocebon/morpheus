@@ -6,7 +6,7 @@
 #include <errno.h>
 
 #define AUTHOR "zer0dx"
-#define VERSION "0.2"
+#define VERSION "0.3"
 #define SERVER_BACKLOG 2000
 
 static void show_banner(){
